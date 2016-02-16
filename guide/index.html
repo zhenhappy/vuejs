@@ -169,7 +169,7 @@
 <p>数据对象是被就地转化的，所以根据引用修改数据和修改 <code>vm.$data</code> 具有相同的效果。这也意味着多个 Vue 实例可以观察同一份数据。在较大型的应用程序中，我们也推荐将 Vue 实例作为纯粹的视图看待，同时把数据处理逻辑放在更独立的外部数据层。</p>
 <p>值得提醒的是，一旦数据被观察，Vue.js 就不会再侦测到新加入或删除的属性了。作为弥补，我们会为被观察的对象增加 <code>$add</code> , <code>$set</code>和 <code>$delete</code> 方法。</p>
 <p>下面是对 Vue.js 数据观测机制实现的高层概览：</p>
-<p><img src="/images/data.png" alt="数据观察"></p>
+<p><img src="/vuejs/images/data.png" alt="数据观察"></p>
 <h3 id="指令-Directives"><a href="#指令-Directives" class="headerlink" title="指令 Directives"></a>指令 Directives</h3><p>带特殊前缀的 HTML 特性，可以让 Vue.js 对一个 DOM 元素做各种处理。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">v-text</span>=<span class="value">"message"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这里的 div 元素有一个 <code>v-text</code> 指令，其值为 <code>message</code>。Vue.js 会让该 div 的文本内容与 Vue 实例中的 <code>message</code> 属性值保持一致。</p>
@@ -189,7 +189,7 @@
 <h3 id="过滤器-Filters"><a href="#过滤器-Filters" class="headerlink" title="过滤器 Filters"></a>过滤器 Filters</h3><p>过滤器是用于在更新视图之前处理原始值的函数。它们通过一个“管道”在指令或绑定中进行处理：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>&#123;&#123;message | capitalize&#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这样在 div 的文本内容被更新之前，<code>message</code> 的值会先传给 <code>capitalizie</code> 函数处理。更多内容可移步至 <a href="../guide/filters.html">深入了解过滤器 (Filters)</a>。</p>
-<h3 id="组件-Components"><a href="#组件-Components" class="headerlink" title="组件 Components"></a>组件 Components</h3><p><img src="/images/components.png" alt="Component Tree"></p>
+<h3 id="组件-Components"><a href="#组件-Components" class="headerlink" title="组件 Components"></a>组件 Components</h3><p><img src="/vuejs/images/components.png" alt="Component Tree"></p>
 <p>在 Vue.js，每个组件都是一个简单的 Vue 实例。一个树形嵌套的各种组件就代表了你的应用程序的各种接口。通过 <code>Vue.extend</code> 返回的自定义构造函数可以把这些组件实例化，不过更推荐的声明式的用法是通过 <code>Vue.component(id, constructor)</code> 注册这些组件。一旦组件被注册，它们就可以在 Vue 实例的模板中以自定义元素形式使用了。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">my-component</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- internals handled by my-component --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">my-component</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这个简单的机制使得我们可以以类似 <a href="http://www.w3.org/TR/components-intro/" target="_blank" rel="external">Web Components</a> 的声明形式对 Vue 组件进行复用和组合，同时无需最新版的浏览器或笨重的 polyfills。通过将一个应用程序拆分成简单的组件，代码库可以被尽可能的解耦，同时更易于维护。更多关于组件的内容，请移步至 <a href="../guide/components.html">组件系统</a>。</p>
